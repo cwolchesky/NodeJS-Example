@@ -6,13 +6,13 @@ function mergeValues(values, content) {
 		//Replace all {{key}} with values from object
 		content = content.replace("{{" + key + "}}", values[key]);
 	}
-		
 	//return merged content
+	return content;
 }
 
 function view(templateName, values, response) {
 	//Read from template file
-	var fileContents = fs.readFileSync('./views/' + templateName + '.html')
+	var fileContents = fs.readFileSync('./views/' + templateName + '.html', {encoding: "utf8"});
 	//insert values into content
 	fileContents = mergeValues(values, fileContents);
 	
